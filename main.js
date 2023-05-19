@@ -77,11 +77,19 @@ function login(event) {
     if (flag == true) {
         localStorage.setItem("InstaCurrentUser",JSON.stringify(currentUser));
         alert("login successfull")
-        window.location.href="./index.html";
+        window.location.href="./home.html";
     }
     else {
         alert("Credintails not matched")
     }
+
+}
+
+function logout() {
+    alert("Logout successful.")
+    localStorage.removeItem("InstaCurrentUser")
+    window.location.reload()
+
 
 }
 

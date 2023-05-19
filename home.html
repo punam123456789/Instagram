@@ -265,6 +265,7 @@
 
 
             </div>
+            <div id="products"> </div>
 
         </div>
 
@@ -294,35 +295,20 @@
             //     alert("current user absent")
             // }
 
-            var productdiv = document.getElementById("main-post");
-          
+            var jwellerydiv = document.getElementById("products");
             var finaldata = "";
-            var  productfromls = JSON.parse(localStorage.getItem("Products"));
-            for (var i = 0; i < productfromls.length; i++) {
-               
-                finaldata +=`<div class="post-box" onclick='redirect(${JSON.stringify(productfromls[i])})' > 
-                    <div class="post-img">
-                        <img src=${productfromls[i].proImage}>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-name">
-                        <div class="Name">${productfromls[i].proName}</div>
-
-                        <div class="product-info">
-                            <div class="post-user">
-                        <div class="user">${productfromls[i].proUser}</div>
-                        
-
-                        </div>`
+            var jwelleryfromls = JSON.parse(localStorage.getItem("Products"));
+            for (var i = 0; i < jwelleryfromls.length; i++) {
+                finaldata += `<div onclick='redirect(${JSON.stringify(jwelleryfromls[i])})' id="singlepro"><img src=${jwelleryfromls[i].proImage} /> <h1>${jwelleryfromls[i].proName}</h1></div>`
             }
             console.log(finaldata, "finaldta here");
-            productdiv.innerHTML = finaldata;
+            jwellerydiv.innerHTML = finaldata;
         }
         function redirect(product) {
             var singleProduct = JSON.stringify(product);
             // alert("working");
             localStorage.setItem("current-product", singleProduct);
-            window.location.href = './singleProduct-1.html'
+            window.location.href = './singleProduct.html'
         }
         function logout() {
             alert("Logout successful.")
@@ -332,5 +318,3 @@
     </script>
 
 </body>
-
-</html>

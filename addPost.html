@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddProducts</title>
+</head>
+<body>
+    <form onsubmit="addRingProduct(event)">
+
+        <label>Post Image url</label><br />
+        <input type="text" id="pimage" /><br />
+        <label>User Name</label><br />
+        <input type="text" id="pname" /><br />
+        <!-- <label>Post Image url</label><br />
+        <input type="text" id="puimage" /><br /> -->
+      
+
+        <input type="submit" /><br />
+
+
+    </form>
+    <script>
+        function addRingProduct(event){
+            event.preventDefault();
+            var proImage = document.getElementById("pimage").value;
+            var proName = document.getElementById("pname").value;
+            
+           
+
+            var product = {proImage, proName };
+
+            var LS = JSON.parse(localStorage.getItem("Products")) || [];
+            LS.push(product);
+            localStorage.setItem("Products", JSON.stringify(LS));
+            alert("product added succefully..")
+        }
+    </script>
+</body>
+</html>
