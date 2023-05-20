@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://kit.fontawesome.com/4781840b9b.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profilecss.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <div>
+                <img src="insta-Icon.png" alt="">
+            </div>
+            <div>
+                <img src="logo.png" alt="">
+            </div>
+        </a>
+        <!-- <div class="profile">
+            <div class="profile-img">
+                <img src="profile-2.jpeg" alt="">
+            </div>
+            <div class="name">
+                <h1>Punam</h1>
+                <img src="verify.jpg" alt="">
+            </div>
+            <span>@punam</span>
+
+
+
+
+        </div>
+        <div class="about">
+            <div class="box">
+                <h3>55</h3>
+                <span>Posts</span>
+
+            </div>
+            <div class="box">
+                <h3>10k</h3>
+                <span>Followers</span>
+
+            </div>
+            <div class="box">
+                <h3>20</h3>
+                <span>Following</span>
+
+            </div>
+
+        </div> -->
+
+        <div class="menu">
+            <a href="#" class="active">
+                <span class="icon">
+                    <i class="fa-solid fa-house"></i>
+
+                </span>
+                home
+            </a>
+            <a href="#">
+                <span class="icon">
+                    <i class="fa-solid fa-user"></i>
+                </span>
+                <div id="switch">Account</div>
+            </a>
+            <a href="#">
+                <span class="icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                Explore
+            </a>
+            <a href="#">
+                <span class="icon">
+                    <i class="fa-regular fa-bell"></i>
+                </span>
+                Notification
+            </a>
+            <a href="#">
+                <span class="icon">
+                    <i class="fa-solid fa-comment"></i>
+                </span>
+                Messages
+            </a>
+            <a href="#">
+                <span class="icon">
+                    <i class="fa-solid fa-location-arrow"></i>
+                </span>
+                Direct
+            </a>
+            <a href="#">
+                <span class="icon">
+                    <i class="fa-solid fa-signal"></i>
+                </span>
+                Stats
+            </a>
+            <a href="#">
+                <span class="icon">
+                    <i class="fa-solid fa-gear"></i>
+                </span>
+                Setting
+            </a>
+            <a href="#">
+                <span class="icon">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </span>
+                <div id="logout"> Logout</div>
+            </a>
+
+        </div>
+    </div>
+
+
+    <div class="main-home">
+        <div class="main">
+        <div class="profile">
+            <div class="profile-img">
+                <img src="profile-2.jpeg" alt="">
+            </div>
+            <!-- <div class="name">
+                <h1>Punam</h1>
+                <img src="verify.jpg" alt="">
+            </div>
+            <span>@punam</span> -->
+
+
+
+
+        </div>
+        <div class="info">
+             <div class="name" style="display: flex;">
+                <h1>Punam Rokade</h1>
+                <button>Edite Profile</button>
+                <i class="fa-solid fa-gear"></i>
+                <!-- <img src="verify.jpg" alt=""> -->
+            </div>
+            <span>@punam</span>
+            <div class="about">
+                <div class="box">
+                    <h3>55</h3>
+                    <span>Posts</span>
+    
+                </div>
+                <div class="box">
+                    <h3>10k</h3>
+                    <span>Followers</span>
+    
+                </div>
+                <div class="box">
+                    <h3>20</h3>
+                    <span>Following</span>
+    
+                </div>
+    
+            </div>
+    
+
+
+        </div>
+        <!-- <div class="about">
+            <div class="box">
+                <h3>55</h3>
+                <span>Posts</span>
+
+            </div>
+            <div class="box">
+                <h3>10k</h3>
+                <span>Followers</span>
+
+            </div>
+            <div class="box">
+                <h3>20</h3>
+                <span>Following</span>
+
+            </div>
+
+        </div> -->
+
+        
+    </div>
+    <div class="main-post">
+        <div class="post-box">
+            <img src="profile-1.jpeg" alt="">
+            <div class="post-info">
+                <div class="post-profile">
+                    <div class="post-img">
+                        <img src="profile-1.jpeg" alt="">
+
+                    </div>
+                    <h3>Riya</h3>
+
+                </div>
+                <div class="likes">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>77k</span>
+                    <i class="fa-regular fa-comment"></i>
+                    <span>77k</span>
+                </div>
+
+            </div>
+
+
+        </div>
+        </div>
+
+    </div>
+
+    <script>
+        window.onload = function () {
+            //  alert("working")
+             var currentUser = JSON.parse(localStorage.getItem("currentUser"))
+            // console.log(currentUser,"current user");
+            if (!!currentUser) {
+                // alert(currenUser,"username")
+                var logoutDiv = document.getElementById("logout")
+                var divfromHtml = document.getElementById("switch");
+                // console.log(divfromHtml, "divfromhtml");
+                // var h1=document.createElement("h1");
+                
+                // divfromHtml.append(h1)
+                var button = '<button onclick="logout()">Logout</button>'
+                // var button = '<span class="lgbtn-wrap"><i class="fa-solid fa-arrow-right-from-bracket id=logout-icon"></i> <button onclick="logout()" class="logout-button-txt">Logout</button></span>'
+                var name = `<h1>${currentUser.userName}</h1>`;
+                divfromHtml.innerHTML = name;
+                logoutDiv.innerHTML = button;
+            }
+            //  else {
+            //     alert("current user absent")
+            // }
+
+
+            var product = JSON.parse(localStorage.getItem("current-product"));
+
+            var divToAppendProduct = document.getElementById("singleProduct");
+            var structure = `<div id='singlePro'> <img src='${product.proImage}' /> <br/> <h1>${product.proName}</h1><br/> <button onclick='addCart(${JSON.stringify(product)})'>Add to cart</button> </div>`
+            console.log(structure, "here");
+            
+            divToAppendProduct.innerHTML = structure;
+        }
+        function addCart(product){
+            alert("Adding to cart")
+            var currentUser=JSON.parse(localStorage.getItem("InstaCurrentUser"));
+            var userData=JSON.parse(localStorage.getItem("InstaUsers"));
+            var flagforUser=false;
+            for(var i=0;i<userData.length;i++){
+                if(currentUser.userEmail===userData[i].userEmail)
+                {
+                    if(userData[i].cartProducts==undefined)
+                    {
+                        userData[i].cartProducts=[product];
+                    }else
+                    {
+                        userData[i].cartProducts.push(product);
+
+                    }
+                    alert("product added to cart")
+                    // window.location.href='./Cart.html'
+                }
+            }
+            localStorage.setItem("InstaUsers",JSON.stringify(userData));
+        }
+    </script>
+</body>
+
+
+</body>
+
+</html>

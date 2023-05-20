@@ -20,7 +20,8 @@
                 <img src="logo.png" alt="">
             </div>
         </a>
-        <div class="profile">
+
+        <div class="profile" onclick="window.location.href=`./profile.html`">
             <div class="profile-img">
                 <img src="profile-2.jpeg" alt="">
             </div>
@@ -308,7 +309,7 @@
             var singleProduct = JSON.stringify(product);
             // alert("working");
             localStorage.setItem("current-product", singleProduct);
-            window.location.href = './singleProduct.html'
+            window.location.href = './profile.html'
         }
         function logout() {
             alert("Logout successful.")
