@@ -358,3 +358,21 @@ body{
     font-size: 14px;
     margin-left: 7px;
 }
+
+
+#singleProduct {
+    width: 100%;
+}
+
+#singlePro {
+    border: 1px solid black;
+    width: 30%;
+    /* height: 600px; */
+    margin: auto;
+    text-align: center;
+}
+
+#singlePro>img {
+    width: 100%;
+    height: 350px;
+}
