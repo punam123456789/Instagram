@@ -115,9 +115,9 @@
 
 
     <div class="main-home">
-        <div class="main" id="finalProfile">
+        <div class="main" id="FinalProfile">
             <div class="profile">
-                <div class="profile-img" id="profileImage">
+                <div class="profile-img" id="ProfileImage">
                     <img src="profile-2.jpeg" alt="">
                 </div>
                 <!-- <div class="name">
@@ -215,7 +215,7 @@
     <script>
         window.onload = function () {
             //  alert("working")
-            var currentUser = JSON.parse(localStorage.getItem("currentUser"))
+            var currentUser = JSON.parse(localStorage.getItem("InstaCurrentUser"))
             // console.log(currentUser,"current user");
             if (!!currentUser) {
                 // alert(currenUser,"username")
@@ -236,15 +236,7 @@
             // }
 
 
-            var product = JSON.parse(localStorage.getItem("current-product"));
-
-            var divToAppendProduct = document.getElementById("singleProduct");
-            var structure = `<div id='singlePro'> <img src='${product.proImage}' /> <br/> <h1>${product.proName}</h1><br/> <button onclick='addCart(${JSON.stringify(product)})'>Like</button> </div>`
-            console.log(structure, "here");
-
-            divToAppendProduct.innerHTML = structure;
-
-
+          
             // alert("Adding to cart")
             var currentUser = JSON.parse(localStorage.getItem("InstaCurrentUser"));
             var userData = JSON.parse(localStorage.getItem("InstaUsers"));
@@ -295,6 +287,13 @@
 
             
             }
+              function logout() {
+            alert("Logout successful.")
+            localStorage.removeItem("InstaCurrentUser")
+            window.location.reload()
+
+
+        }
     </script>
 </body>
 
