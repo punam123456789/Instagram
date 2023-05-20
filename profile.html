@@ -115,12 +115,12 @@
 
 
     <div class="main-home">
-        <div class="main">
-        <div class="profile">
-            <div class="profile-img">
-                <img src="profile-2.jpeg" alt="">
-            </div>
-            <!-- <div class="name">
+        <div class="main" id="finalProfile">
+            <div class="profile">
+                <div class="profile-img" id="profileImage">
+                    <img src="profile-2.jpeg" alt="">
+                </div>
+                <!-- <div class="name">
                 <h1>Punam</h1>
                 <img src="verify.jpg" alt="">
             </div>
@@ -129,38 +129,41 @@
 
 
 
-        </div>
-        <div class="info">
-             <div class="name" style="display: flex;">
-                <h1>Punam Rokade</h1>
-                <button>Edite Profile</button>
-                <i class="fa-solid fa-gear"></i>
-                <!-- <img src="verify.jpg" alt=""> -->
             </div>
-            <span>@punam</span>
-            <div class="about">
-                <div class="box">
-                    <h3>55</h3>
-                    <span>Posts</span>
-    
+            <div class="info" >
+                <div class="name" style="display: flex;">
+                    <h1 id="ProfileSubname">Punam Rokade</h1>
+                    <button onclick="window.location.href=`./editeProfile.html`">Edite Profile</button>
+                    <i class="fa-solid fa-gear"></i>
+                    <!-- <img src="verify.jpg" alt=""> -->
                 </div>
-                <div class="box">
-                    <h3>10k</h3>
-                    <span>Followers</span>
-    
-                </div>
-                <div class="box">
-                    <h3>20</h3>
-                    <span>Following</span>
-    
-                </div>
-    
-            </div>
-    
+                <span>@punam</span>
+                <div class="about">
+                    <div class="box">
+                        <h3>55</h3>
+                        <span>Posts</span>
+
+                    </div>
+                    <div class="box">
+                        <h3>10k</h3>
+                        <span>Followers</span>
+
+                    </div>
+                    <div class="box">
+                        <h3>20</h3>
+                        <span>Following</span>
+
+                    </div>
 
 
-        </div>
-        <!-- <div class="about">
+                </div>
+                <div id="ProfileBio">
+
+                </div>
+
+
+            </div>
+            <!-- <div class="about">
             <div class="box">
                 <h3>55</h3>
                 <span>Posts</span>
@@ -179,31 +182,31 @@
 
         </div> -->
 
-        
-    </div>
-    <div class="main-post">
-        <div class="post-box">
-            <img src="profile-1.jpeg" alt="">
-            <div class="post-info">
-                <div class="post-profile">
-                    <div class="post-img">
-                        <img src="profile-1.jpeg" alt="">
-
-                    </div>
-                    <h3>Riya</h3>
-
-                </div>
-                <div class="likes">
-                    <i class="fa-solid fa-heart"></i>
-                    <span>77k</span>
-                    <i class="fa-regular fa-comment"></i>
-                    <span>77k</span>
-                </div>
-
-            </div>
-
 
         </div>
+        <div class="main-post">
+            <div class="post-box">
+                <img src="profile-1.jpeg" alt="">
+                <div class="post-info">
+                    <div class="post-profile">
+                        <div class="post-img">
+                            <img src="profile-1.jpeg" alt="">
+
+                        </div>
+                        <h3>Riya</h3>
+
+                    </div>
+                    <div class="likes">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>77k</span>
+                        <i class="fa-regular fa-comment"></i>
+                        <span>77k</span>
+                    </div>
+
+                </div>
+
+
+            </div>
         </div>
         <div id="singleProduct"></div>
 
@@ -212,7 +215,7 @@
     <script>
         window.onload = function () {
             //  alert("working")
-             var currentUser = JSON.parse(localStorage.getItem("currentUser"))
+            var currentUser = JSON.parse(localStorage.getItem("currentUser"))
             // console.log(currentUser,"current user");
             if (!!currentUser) {
                 // alert(currenUser,"username")
@@ -220,7 +223,7 @@
                 var divfromHtml = document.getElementById("switch");
                 // console.log(divfromHtml, "divfromhtml");
                 // var h1=document.createElement("h1");
-                
+
                 // divfromHtml.append(h1)
                 var button = '<button onclick="logout()">Logout</button>'
                 // var button = '<span class="lgbtn-wrap"><i class="fa-solid fa-arrow-right-from-bracket id=logout-icon"></i> <button onclick="logout()" class="logout-button-txt">Logout</button></span>'
@@ -238,31 +241,60 @@
             var divToAppendProduct = document.getElementById("singleProduct");
             var structure = `<div id='singlePro'> <img src='${product.proImage}' /> <br/> <h1>${product.proName}</h1><br/> <button onclick='addCart(${JSON.stringify(product)})'>Like</button> </div>`
             console.log(structure, "here");
-            
-            divToAppendProduct.innerHTML = structure;
-        }
-        function addCart(product){
-            alert("Adding to cart")
-            var currentUser=JSON.parse(localStorage.getItem("InstaCurrentUser"));
-            var userData=JSON.parse(localStorage.getItem("InstaUsers"));
-            var flagforUser=false;
-            for(var i=0;i<userData.length;i++){
-                if(currentUser.userEmail===userData[i].userEmail)
-                {
-                    if(userData[i].cartProducts==undefined)
-                    {
-                        userData[i].cartProducts=[product];
-                    }else
-                    {
-                        userData[i].cartProducts.push(product);
 
+            divToAppendProduct.innerHTML = structure;
+
+
+            // alert("Adding to cart")
+            var currentUser = JSON.parse(localStorage.getItem("InstaCurrentUser"));
+            var userData = JSON.parse(localStorage.getItem("InstaUsers"));
+            var userBio = JSON.parse(localStorage.getItem("InstaProfile"));
+            var flagforUser = false;
+            for (var i = 0; i < userData.length; i++) {
+                if (currentUser.userEmail === userData[i].userEmail) {
+                    if (userData[i].bio == undefined) {
+                        userData[i].bio = userBio[i];
                     }
-                    alert("product added to cart")
-                    // window.location.href='./Cart.html'
                 }
             }
-            localStorage.setItem("InstaUsers",JSON.stringify(userData));
-        }
+
+
+                
+                localStorage.setItem("InstaUsers", JSON.stringify(userData));
+                var divToAppendProfileImage = document.getElementById("ProfileImage");
+                var divToAppendProfileSubname = document.getElementById("ProfileSubname");
+                var divToAppendProfileBio = document.getElementById("ProfileBio");
+                var divToAppendFinalProfile = document.getElementById("FinalProfile");
+
+                var products;
+                for (var i = 0; i < userData.length; i++) {
+                    if (currentUser.userEmail == userData[i].userEmail) {
+                        products = userBio;
+                    }
+                }
+                console.log(products, "bio here");
+
+                var finalProfileImage = "";
+                var finalProfileSubname = "";
+                var finalProfileBio = "";
+                var finalProfile = "";
+
+                for (var i = 0; i < products.length; i++) {
+                    finalProfile = finalProfileImage = `<div class="profile-image" id="profileImage"
+                  <img src='${products[i].pimage}'/>
+                  </div>
+                  `
+                    finalProfileSubname = `${products[i].pSname}`
+                    finalProfileBio = `${products[i].bio}`
+
+                }
+                divToAppendProfileImage.innerHTML = finalProfileImage;
+                divToAppendProfileSubname.innerHTML = finalProfileSubname;
+                divToAppendProfileBio.innerHTML = finalProfileBio;
+                divToAppendFinalProfile.innerHTML = finalProfile;
+
+            
+            }
     </script>
 </body>
 

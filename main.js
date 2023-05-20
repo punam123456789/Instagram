@@ -33,7 +33,7 @@ function register(event) {
                     Ls.push(userdata);
                     localStorage.setItem("InstaUsers", JSON.stringify(Ls))
                     alert("Registration Successful")
-                    window.location.href="./login.html";
+                    window.location.href = "./login.html";
                     document.getElementById("username").value = ""
                     document.getElementById("useremail").value = ""
                     document.getElementById("userpassword").value = ""
@@ -71,17 +71,38 @@ function login(event) {
     for (var i = 0; i < Ls.length; i++) {
         if (Ls[i].userEmail == userEmail && Ls[i].userPassword == userPassword) {
             flag = true;
-            currentUser=Ls[i];
+            currentUser = Ls[i];
         }
     }
     if (flag == true) {
-        localStorage.setItem("InstaCurrentUser",JSON.stringify(currentUser));
+        localStorage.setItem("InstaCurrentUser", JSON.stringify(currentUser));
         alert("login successfull")
-        window.location.href="./home.html";
+        window.location.href = "./home.html";
     }
     else {
         alert("Credintails not matched")
     }
+
+}
+
+function createProfile(event) {
+    event.preventDefault();
+    var pSname = document.getElementById("pname").value
+
+    var pimage = document.getElementById("pImage").value
+
+    var bio = document.getElementById("pBio").value
+    var product = { pSname, pimage, bio }
+
+    var Ls = JSON.parse(localStorage.getItem("InstaProfile")) || [];
+    Ls.push(product);
+    localStorage.setItem("InstaProfile", JSON.stringify(Ls));
+    alert("profile updated");
+    window.location.href = "./profile.html";
+    document.getElementById("pSname").value = ""
+    document.getElementById("pimage").value = ""
+    document.getElementById(" bio").value = ""
+
 
 }
 
