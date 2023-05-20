@@ -387,7 +387,7 @@ body{
 
 .Profile {
     width: 70%;
-    margin-left: 20%;
+    /* margin-left: 20%; */
     /* border: .1rem solid red; */
     padding: 3rem 5rem;
 
