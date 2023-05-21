@@ -404,7 +404,7 @@ body{
 
 .ProfileLeft {
     width: 28%;
-    border: .1rem solid black;
+    /* border: .1rem solid black; */
 }
 
 .ProfileImg {

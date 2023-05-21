@@ -99,9 +99,9 @@ function createProfile(event) {
     localStorage.setItem("InstaProfile", JSON.stringify(Ls));
     alert("profile updated");
     window.location.href = "./profile.html";
-    document.getElementById("pSname").value = ""
-    document.getElementById("pimage").value = ""
-    document.getElementById(" bio").value = ""
+    document.getElementById("pname").value = ""
+    document.getElementById("pImage").value = ""
+    document.getElementById(" pBio").value = ""
 
 
 }
